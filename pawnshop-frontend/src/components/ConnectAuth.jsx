@@ -14,12 +14,12 @@ const ConnectAuth = () => {
       {connected ? (
         <>
           <div className="dropdown dropdown-bottom dropdown-end">
-            <div tabIndex={0} role="button" className="btn m-1">
+            <div tabIndex={0} role="button" className="btn m-1  bg-white text-black">
               View Wallet
             </div>
             <ul
               tabIndex={0}
-              className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+              className="dropdown-content menu rounded-box z-[1] w-52 p-2 shadow bg-white text-black"
             >
               <li>
               <a>

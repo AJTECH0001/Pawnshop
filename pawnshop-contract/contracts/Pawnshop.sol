@@ -34,6 +34,7 @@ contract Pawnshop {
     event CollateralSeized(address indexed borrower);
 
     // Add a luxury item to the pawnshop inventory
+    // TODO: add one mote details to the struct to accomode luxury type such as shoe bag or watch
     function addLuxuryItem(
         string memory _itemName,
         string memory _description,

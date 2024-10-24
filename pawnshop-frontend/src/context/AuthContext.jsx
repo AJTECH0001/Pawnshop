@@ -20,7 +20,7 @@ export const AuthContext = ({ children }) => {
   const smartAccount = new SmartAccount(provider, {
     projectId: process.env.NEXT_PUBLIC_APP_PROJECT_ID || "",
     clientKey: process.env.NEXT_PUBLIC_APP_CLIENT_KEY || "",
-    appId: process.env.NEXT_PUBLIC_APP_API_KEY || "", //
+    appId: process.env.NEXT_PUBLIC_APP_APP_ID || "", //
     aaOptions: {
       accountContracts: {
         SIMPLE: [{ version: "0.1.0", chainIds: [] }],
@@ -49,7 +49,7 @@ export const AuthContext = ({ children }) => {
     const balanceResponseparticle = await customProvider.getBalance(
       addressparticle
     );
-    const balanceRes = ethers.utils.formatEthers(balanceResponseparticle);
+    const balanceRes = ethers.utils.formatEther(balanceResponseparticle);
     setBalance(balanceRes);
     const signers = customProvider?.getSigner();
     setSigner(signers);

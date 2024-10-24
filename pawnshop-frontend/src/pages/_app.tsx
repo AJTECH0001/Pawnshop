@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             options={{
               projectId: process.env.NEXT_PUBLIC_APP_PROJECT_ID || "",
               clientKey: process.env.NEXT_PUBLIC_APP_CLIENT_KEY || "",
-              appId: process.env.NEXT_PUBLIC_APP_API_KEY || "",// --
+              appId: process.env.NEXT_PUBLIC_APP_APP_ID || "",// --
               erc4337: {
                 // Optional
                 name: 'SIMPLE', // The smart account you intend to use
