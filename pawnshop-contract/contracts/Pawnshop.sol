@@ -10,6 +10,7 @@ contract Pawnshop {
         bytes32 receiptHash; // hash of the receipt for verification
         uint256 value; // value of the luxury item
         address owner;
+        string luxuryType; // Type of luxury item (e.g., shoe, bag, watch)
         bool pawned;
     }
 
@@ -39,6 +40,7 @@ contract Pawnshop {
         string memory _itemName,
         string memory _description,
         string memory _receiptUrl,
+        string memory _luxuryType,
         bytes32 _receiptHash,
         uint256 _value
     ) public {
@@ -50,6 +52,7 @@ contract Pawnshop {
             receiptHash: _receiptHash,
             value: _value,
             owner: msg.sender,
+            luxuryType: _luxuryType, 
             pawned: false
         });
         itemCounter++;
