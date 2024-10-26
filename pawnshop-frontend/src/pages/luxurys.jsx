@@ -1,8 +1,12 @@
 import React from 'react'
 import ItemCard from '../components/ItemCard'
+import Navbar from '../components/Navbar'
 const Luxurys = () => {
   return (
-    <div>
+    <div className=''>
+        <div>
+            <Navbar />
+        </div>
         <ItemCard />
     </div>
   )
