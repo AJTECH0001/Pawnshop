@@ -5,11 +5,11 @@ import {
   useConnect,
   useAuthCore,
 } from "@particle-network/auth-core-modal";
-import { ArbitrumSepolia, chains } from "@particle-network/chains";
+import { ArbitrumSepolia } from "@particle-network/chains";
 import { AAWrapProvider, SendTransactionMode } from "@particle-network/aa";
 import { SmartAccount } from "@particle-network/aa";
-import { createClient } from "viem";
 import { ethers } from "ethers";
+import { pawnshop } from "../contract/pawnshop";
 
 const SocialoginAccount = createContext();
 
@@ -39,7 +39,7 @@ export const AuthContext = ({ children }) => {
   const { connect, disconnect, connected } = useConnect();
   const { userInfo } = useAuthCore();
 
-  const contract = "contract"
+  
 
   // fetch balanece
   const fetchBalance = async () => {
@@ -61,6 +61,9 @@ export const AuthContext = ({ children }) => {
     console.error("customProvider is not available");
   }
 
+  const contract = new ethers.Contract(
+    pawnshop.address, pawnshop.abi, signerP
+  )
   useEffect(() => {
     if (userInfo) {
       fetchBalance();

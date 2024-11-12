@@ -3,7 +3,8 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select } from "./ui/select";
 import { Button } from "./ui/button"
-// import { useAuth } from "../context/AuthContext";
+import { useAuth } from "../context/AuthContext";
+import useLoading from "../hooks/useLoading"
 
 const Addluxury = () => {
   const [itemName, setItemName] = useState("");
@@ -12,12 +13,36 @@ const Addluxury = () => {
   const [image, setImage] = useState('')
   const [watchType, setWatchType] = useState("");
 
-//   const { signerP } = useAuth()
+  const {startLoading: startLoadLux, isLoading: isLoadingLux, stopLoading: stopLoadingLux} = useLoading()
+
+  const { signerP, contract } = useAuth()
+  const has32 =  ""
+
+  const hanldeNewLuxury = async (e) => {
+    e.preventDefault();
+    startLoadLux()
+    try {
+      const addLux = await contract.addLuxuryItem(
+        itemName,
+        description,
+        image,
+        watchType, has32, price
+  
+      )
+      // await addLux.wait()
+      stopLoadingLux()
+    } catch (error) {
+      console.log(error)
+      stopLoadingLux()
+    }
+  }
+
+  
 
 
   return (
     <div className=" flex justify-around items-center py-9">
-      <form action="" className="space-y-4">
+      <form action="" onSubmit={hanldeNewLuxury} className="space-y-4">
         <div className="w-[400px]">
         <Label htmlFor="watchtype">Watch Type</Label>
           <Select
@@ -43,7 +68,7 @@ const Addluxury = () => {
           <Input
             id="image"
             placeholder="Recipet URL"
-            value={itemName}
+            value={image}
             onChange={(e) => setImage(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
@@ -64,7 +89,7 @@ const Addluxury = () => {
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <Button type="submit" className="w-full mt-5 px-6 py-3 text-white bg-blue-500 rounded-md hover:bg-blue-600">
-            Add Luxury
+            {isLoadingLux ? "Adding Luxury": "Add Luxury"}
           </Button>
 
           

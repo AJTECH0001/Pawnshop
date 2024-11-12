@@ -23,7 +23,7 @@ const ConnectAuth = () => {
             >
               <li>
               <a>
-                <p>{balanceInfo}</p>
+                <p>Balance {balanceInfo}</p>
                 </a>
               </li>
               <li>

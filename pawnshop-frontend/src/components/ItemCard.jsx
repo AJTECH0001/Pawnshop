@@ -1,6 +1,24 @@
-import React from 'react'
+'use client'
+import React, { useCallback, useState, useEffect } from 'react'
+import { useAuth } from '../context/AuthContext'
 
-const ItemCard = () => {
+
+const ItemCard = ({}) => {
+
+  const [fetchLux, setFetchLux] = useState(null)
+
+  const { signerP, contract } = useAuth()
+
+
+  const getFormatedData = useCallback(() => {
+    try {
+      const luxury = contract.luxuryItems(id);
+
+      console.log(luxury)
+    } catch (error) {
+      console.log(error)
+    }
+  })
   return (
     <div className=" my-3 mx-3">
       <div className="card card-compact bg-white w-96 shadow-xl p-6">
